@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aethermind - Hire Coders to Solve AI Issues</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+        /* Reset and base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #fafafa;
+            color: #121212;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        /* HEADER */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -0.02em;
+            user-select: none;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        .nav-link {
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 0;
+            position: relative;
+            color: #121212;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        .nav-link:hover,
+        .nav-link:focus-visible {
+            border-bottom: 2px solid #121212;
+            outline-offset: 4px;
+        }
+
+        /* Hamburger for Mobile */
+        .mobile-menu-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: none;
+            font-size: 28px;
+            color: #121212;
+        }
+
+        /* MOBILE NAV */
+        .mobile-nav {
+            display: none;
+            background: white;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 24px;
+            overflow-y: auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+        .mobile-nav.show {
+            display: block;
+        }
+        .mobile-nav a {
+            display: block;
+            font-weight: 600;
+            font-size: 1.25rem;
+            padding: 16px 0;
+            border-bottom: 1px solid #eee;
+            color: #121212;
+        }
+
+        /* MAIN CONTENT */
+        main {
+            max-width: 1440px;
+            margin: 48px auto;
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .hero-content {
+            max-width: 600px;
+        }
+        .hero-title {
+            font-weight: 800;
+            font-size: 2.75rem;
+            line-height: 1.1;
+            margin: 0 0 16px 0;
+            letter-spacing: -0.02em;
+            user-select: none;
+        }
+        .hero-subtitle {
+            font-size: 1.15rem;
+            margin-bottom: 32px;
+            color: #333;
+            user-select: none;
+        }
+        .btn-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 12px 24px;
+            border: 2px solid #121212;
+            color: #121212;
+            background-color: transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-decoration: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn-contact:hover,
+        .btn-contact:focus-visible {
+            background-color: #121212;
+            color: #fafafa;
+            outline-offset: 4px;
+        }
+        .material-icons.btn-icon {
+            font-size: 20px;
+        }
+
+        /* FEATURES GRID for Desktop */
+        .features {
+            margin-top: 64px;
+            display: none;
+            gap: 32px;
+            justify-content: space-between;
+        }
+        .feature-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            flex: 1;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            min-width: 220px;
+        }
+        .feature-icon {
+            font-size: 36px;
+            color: #121212;
+            user-select: none;
+        }
+        .feature-title {
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin: 0;
+        }
+        .feature-description {
+            color: #555;
+            font-size: 1rem;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #fff;
+            border-top: 1px solid #eee;
+            text-align: center;
+            padding: 24px 16px;
+            font-size: 0.9rem;
+            color: #666;
+            user-select: none;
+        }
+
+        /* RESPONSIVE */
+
+        /* Mobile (320px - 767px) */
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-button {
+                display: block;
+            }
+            main {
+                margin: 32px auto;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .btn-contact {
+                width: 100%;
+                justify-content: center;
+            }
+            .features {
+                display: none;
+            }
+        }
+
+        /* Desktop (768px - 1439px) */
+        @media (min-width: 768px) and (max-width: 1439px) {
+            .nav-links {
+                display: flex;
+            }
+            .mobile-menu-button {
+                display: none;
+            }
+            main {
+                flex-direction: row;
+                gap: 64px;
+                padding: 0 48px;
+            }
+            .hero-content {
+                max-width: 480px;
+            }
+            .features {
+                display: flex;
+            }
+        }
+
+        /* Large Desktop (1440px and above) */
+        @media (min-width: 1440px) {
+            .header-container,
+            main {
+                max-width: 1200px;
+                margin: 48px auto;
+                padding: 0 48px;
+            }
+            main {
+                flex-direction: row;
+                gap: 64px;
+            }
+            .hero-content {
+                max-width: 540px;
+            }
+            .features {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo" tabindex="0">aethermind</div>
+            <nav>
+                <ul class="nav-links" role="menubar" aria-label="Primary">
+                    <li role="none"><a href="#about" class="nav-link" role="menuitem" tabindex="0">About</a></li>
+                    <li role="none"><a href="#jobs" class="nav-link" role="menuitem" tabindex="0">Join Us</a></li>
+                    <li role="none"><a href="#contact" class="nav-link" role="menuitem" tabindex="0">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="material-icons">menu</span>
+                </button>
+            </nav>
+        </div>
+        <nav id="mobile-menu" class="mobile-nav" aria-label="Mobile navigation" hidden>
+            <a href="#about" tabindex="0">About</a>
+            <a href="#jobs" tabindex="0">Join Us</a>
+            <a href="#contact" tabindex="0">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-content" aria-labelledby="hero-title">
+            <h1 id="hero-title" class="hero-title">Building powerful tools for AI startups</h1>
+            <p class="hero-subtitle">We create software and models that solve everyday problems for AI companies.</p>
+            <a href="#contact" class="btn-contact" role="button">
+                <span class="material-icons btn-icon" aria-hidden="true">mail_outline</span>
+                Contact Us
+            </a>
+        </section>
+
+        <section class="features" aria-label="Why Join Aethermind">
+            <article class="feature-card" tabindex="0">
+                <span class="material-icons feature-icon" aria-hidden="true">rocket_launch</span>
+                <h3 class="feature-title">Launch Real AI Products</h3>
+                <p class="feature-description">Help build AI-driven software that moves beyond research and demos to real-world use.</p>
+            </article>
+            <article class="feature-card" tabindex="0">
+                <span class="material-icons feature-icon" aria-hidden="true">people_outline</span>
+                <h3 class="feature-title">Collaborate With Experts</h3>
+                <p class="feature-description">Work alongside developers and startups passionate about making AI accessible and useful.</p>
+            </article>
+            <article class="feature-card" tabindex="0">
+                <span class="material-icons feature-icon" aria-hidden="true">build_circle</span>
+                <h3 class="feature-title">Solve Everyday AI Challenges</h3>
+                <p class="feature-description">Tackle real issues faced by AI startups and users with cutting-edge AI tools and models.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer id="contact" role="contentinfo" tabindex="0">
+        <p>Reach out to us — <a href="mailto:careers@aethermind.ai" style="color:#121212; font-weight: 600;">careers@aethermind.ai</a></p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle logic
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', !expanded);
+            if (expanded) {
+                mobileMenu.hidden = true;
+                mobileMenu.classList.remove('show');
+            } else {
+                mobileMenu.hidden = false;
+                mobileMenu.classList.add('show');
+            }
+        });
+
+        // Close mobile menu on navigation link click for UX
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.hidden = true;
+                mobileMenu.classList.remove('show');
+                mobileMenuButton.setAttribute('aria-expanded', false);
+            }); 
+        });
+    </script>
+</body>
+</html>
+
